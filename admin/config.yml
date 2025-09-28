@@ -1,0 +1,105 @@
+backend:
+  name: git-gateway
+  branch: main # Or your default branch
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "shop"
+    label: "Shop"
+    folder: "_data/shop"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Price", name: "price", widget: "string"}
+  - name: "index-about"
+    label: "歡迎來到神來一筆工作坊"
+    files:
+      - file: "_data/index-about.json"
+        label: "Content"
+        name: "content"
+        fields:
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "string"}
+          - {label: "Paragraph 1", name: "p1", widget: "string"}
+          - {label: "Paragraph 2", name: "p2", widget: "string"}
+          - {label: "Image 1", name: "img1", widget: "image"}
+          - {label: "Image 1 Title", name: "img1_title", widget: "string"}
+          - {label: "Image 1 Text", name: "img1_text", widget: "string"}
+          - {label: "Image 2", name: "img2", widget: "image"}
+          - {label: "Image 2 Title", name: "img2_title", widget: "string"}
+          - {label: "Image 2 Text", name: "img2_text", widget: "string"}
+          - {label: "Image 3", name: "img3", widget: "image"}
+          - {label: "Image 3 Title", name: "img3_title", widget: "string"}
+          - {label: "Image 3 Text", name: "img3_text", widget: "string"}
+          - {label: "Image 4", name: "img4", widget: "image"}
+          - {label: "Image 4 Title", name: "img4_title", widget: "string"}
+          - {label: "Image 4 Text", name: "img4_text", widget: "string"}
+          - {label: "Main Image", name: "main_image", widget: "image"}
+  - name: "index-courses"
+    label: "書法課程介紹"
+    folder: "_data/courses"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}
+  - name: "index-facts"
+    label: "開心學習、專注與藝術"
+    files:
+      - file: "_data/index-facts.json"
+        label: "Content"
+        name: "content"
+        fields:
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "string"}
+          - {label: "Counter 1", name: "counter1", widget: "number"}
+          - {label: "Counter 2", name: "counter2", widget: "number"}
+          - {label: "Counter 3", name: "counter3", widget: "number"}
+          - {label: "Counter 4", name: "counter4", widget: "number"}
+          - {label: "Image", name: "image", widget: "image"}
+  - name: "index-pricing"
+    label: "課程費用一覽表"
+    folder: "_data/pricing"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Price", name: "price", widget: "string"}
+      - {label: "Sentence", name: "sentence", widget: "string"}
+      - {label: "Features", name: "features", widget: "list"}
+  - name: "event-main"
+    label: "客製化書法創作"
+    files:
+      - file: "_data/event-main.json"
+        label: "Main Content"
+        name: "main_content"
+        fields:
+          - {label: "Heading", name: "heading", widget: "string"}
+          - {label: "Subheading", name: "subheading", widget: "string"}
+          - {label: "Process Heading", name: "process_heading", widget: "string"}
+          - {label: "Process Subheading", name: "process_subheading", widget: "string"}
+          - {label: "Gallery Heading", name: "gallery_heading", widget: "string"}
+          - {label: "Gallery Subheading", name: "gallery_subheading", widget: "string"}
+  - name: "process_steps"
+    label: "客製化流程"
+    folder: "_data/process_steps"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+  - name: "gallery_items"
+    label: "客製化作品欣賞"
+    folder: "_data/gallery_items"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Image", name: "image", widget: "image"}

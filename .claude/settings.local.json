@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in blog.html contact.html courses.html course_detail.html event.html event_detail.html shop_cart.html shop_detail.html)",
+      "Bash(do sed -i '70,94c\\\n\t\t\t<li><a href=\"\"index.html\"\">首頁</a></li>\\\n\t\t\t<li class=\"\"dropdown\"\">\\\n\t\t\t\t<a href=\"\"#\"\" class=\"\"dropdown-toggle\"\" data-toggle=\"\"dropdown\"\" >書法課程</a>\\\n\t\t\t\t<ul class=\"\"dropdown-menu\"\">\\\n\t\t\t\t\t<li><a href=\"\"courses.html\"\">課程介紹</a></li>\\\n\t\t\t\t\t<li><a href=\"\"course_detail.html\"\">兒童班</a></li>\\\n\t\t\t\t\t<li><a href=\"\"course_detail.html\"\">成人班</a></li>\\\n\t\t\t\t</ul>\\\n\t\t\t</li>\\\n\t\t\t<li class=\"\"dropdown\"\">\\\n\t\t\t\t<a href=\"\"#\"\" class=\"\"dropdown-toggle\"\" data-toggle=\"\"dropdown\"\" >客製服務</a>\\\n\t\t\t\t<ul class=\"\"dropdown-menu\"\">\\\n\t\t\t\t  <li><a href=\"\"event.html\"\">書法創作</a></li>\\\n\t\t\t\t  <li><a href=\"\"event_detail.html\"\">牌匾設計</a></li>\\\n\t\t\t\t  <li><a href=\"\"event_detail.html\"\">活動揮毫</a></li>\\\n\t\t\t\t</ul>\\\n\t\t\t</li>\\\n\t\t\t<li class=\"\"dropdown\"\">\\\n\t\t\t\t<a href=\"\"#\"\" class=\"\"dropdown-toggle\"\" data-toggle=\"\"dropdown\"\" >作品展售</a>\\\n\t\t\t\t<ul class=\"\"dropdown-menu\"\">\\\n\t\t\t\t  <li><a href=\"\"shop.html\"\">書法作品</a></li>\\\n\t\t\t\t  <li><a href=\"\"shop_detail.html\"\">春聯賀詞</a></li>\\\n\t\t\t\t  <li><a href=\"\"shop_cart.html\"\">購物車</a></li>\\\n\t\t\t\t</ul>\\\n\t\t\t</li>\\\n\t\t\t<li><a href=\"\"blog.html\"\">師資介紹</a></li>\\\n\t\t\t<li><a href=\"\"contact.html\"\">聯絡我們</a></li>' \"$file\")",
+      "Bash(done)",
+      "Read(//c/Users/lovem/.claude//**)",
+      "Bash(grep:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
