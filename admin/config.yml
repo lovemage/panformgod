@@ -44,13 +44,49 @@ collections:
           - {label: "Main Image", name: "main_image", widget: "image"}
   - name: "index-courses"
     label: "書法課程介紹"
-    folder: "_data/courses"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
+    files:
+      - file: "_data/courses/course1.json"
+        label: "Course 1"
+        name: "course1"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+      - file: "_data/courses/course2.json"
+        label: "Course 2"
+        name: "course2"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+      - file: "_data/courses/course3.json"
+        label: "Course 3"
+        name: "course3"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+      - file: "_data/courses/course4.json"
+        label: "Course 4"
+        name: "course4"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+      - file: "_data/courses/course5.json"
+        label: "Course 5"
+        name: "course5"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
+      - file: "_data/courses/course6.json"
+        label: "Course 6"
+        name: "course6"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+          - {label: "Image", name: "image", widget: "image"}
   - name: "index-facts"
     label: "開心學習、專注與藝術"
     files:
@@ -67,14 +103,31 @@ collections:
           - {label: "Image", name: "image", widget: "image"}
   - name: "index-pricing"
     label: "課程費用一覽表"
-    folder: "_data/pricing"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Price", name: "price", widget: "string"}
-      - {label: "Sentence", name: "sentence", widget: "string"}
-      - {label: "Features", name: "features", widget: "list"}
+    files:
+      - file: "_data/pricing/pricing1.json"
+        label: "Pricing 1"
+        name: "pricing1"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+          - {label: "Sentence", name: "sentence", widget: "string"}
+          - {label: "Features", name: "features", widget: "list"}
+      - file: "_data/pricing/pricing2.json"
+        label: "Pricing 2"
+        name: "pricing2"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+          - {label: "Sentence", name: "sentence", widget: "string"}
+          - {label: "Features", name: "features", widget: "list"}
+      - file: "_data/pricing/pricing3.json"
+        label: "Pricing 3"
+        name: "pricing3"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Price", name: "price", widget: "string"}
+          - {label: "Sentence", name: "sentence", widget: "string"}
+          - {label: "Features", name: "features", widget: "list"}
   - name: "event-main"
     label: "客製化書法創作"
     files:
@@ -90,12 +143,31 @@ collections:
           - {label: "Gallery Subheading", name: "gallery_subheading", widget: "string"}
   - name: "process_steps"
     label: "客製化流程"
-    folder: "_data/process_steps"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Description", name: "description", widget: "string"}
+    files:
+      - file: "_data/process_steps/step1.json"
+        label: "Step 1"
+        name: "step1"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+      - file: "_data/process_steps/step2.json"
+        label: "Step 2"
+        name: "step2"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+      - file: "_data/process_steps/step3.json"
+        label: "Step 3"
+        name: "step3"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+      - file: "_data/process_steps/step4.json"
+        label: "Step 4"
+        name: "step4"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
   - name: "gallery_items"
     label: "客製化作品欣賞"
     folder: "_data/gallery_items"
