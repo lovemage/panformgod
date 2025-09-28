@@ -658,6 +658,91 @@
       }
     });
   }
+
+  async function fetchData() {
+    try {
+      const aboutResponse = await fetch('/_data/index-about.json');
+      const aboutData = await aboutResponse.json();
+
+      const coursesResponse = await fetch('/_data/courses/');
+      const coursesData = await coursesResponse.json();
+
+      const factsResponse = await fetch('/_data/index-facts.json');
+      const factsData = await factsResponse.json();
+
+      const pricingResponse = await fetch('/_data/pricing/');
+      const pricingData = await pricingResponse.json();
+
+      // Populate About Section
+      document.querySelector('[data-cms-bind="#about h2"]').innerHTML = aboutData.heading + ' <span class="divider-left"></span>';
+      document.querySelector('[data-cms-bind="#about p.half_space"]').textContent = aboutData.subheading;
+      document.querySelector('[data-cms-bind="#about p:not(.half_space)"]').textContent = aboutData.p1 + aboutData.p2;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(1) img"]').src = aboutData.img1;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(1) h4"]').textContent = aboutData.img1_title;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(1) p"]').textContent = aboutData.img1_text;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(2) img"]').src = aboutData.img2;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(2) h4"]').textContent = aboutData.img2_title;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(2) p"]').textContent = aboutData.img2_text;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(3) img"]').src = aboutData.img3;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(3) h4"]').textContent = aboutData.img3_title;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(3) p"]').textContent = aboutData.img3_text;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(4) img"]').src = aboutData.img4;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(4) h4"]').textContent = aboutData.img4_title;
+      document.querySelector('[data-cms-bind="#about .about-post:nth-of-type(4) p"]').textContent = aboutData.img4_text;
+      document.querySelector('[data-cms-bind="#about .img-responsive"]').src = aboutData.main_image;
+
+      // Populate Courses Section
+      const courseSlider = document.getElementById('course_slider');
+      courseSlider.innerHTML = '';
+      coursesData.forEach((course, index) => {
+        const item = document.createElement('div');
+        item.className = 'item';
+        item.innerHTML = `
+          <div class="image bottom20">
+            <img src="${course.image}" alt="Courses" class="img-responsive border_radius" data-cms-bind="#course_slider .item:nth-of-type(${index + 1}) img">
+          </div>
+          <h3 class="bottom15"><a href="course_detail.html" data-cms-bind="#course_slider .item:nth-of-type(${index + 1}) h3 a">${course.title}</a></h3>
+          <p class="bottom15" data-cms-bind="#course_slider .item:nth-of-type(${index + 1}) p">${course.description}</p>
+          <a href="course_detail.html" class="btn_common blue border_radius">了解更多</a>
+        `;
+        courseSlider.appendChild(item);
+      });
+
+      // Populate Facts Section
+      document.querySelector('[data-cms-bind="#facts h2"]').innerHTML = factsData.heading + ' <span class="divider-center"></span>';
+      document.querySelector('[data-cms-bind="#facts p"]').textContent = factsData.subheading;
+      document.querySelector('[data-cms-bind="#facts .counters-item:nth-of-type(1) strong"]').textContent = factsData.counter1;
+      document.querySelector('[data-cms-bind="#facts .counters-item:nth-of-type(2) strong"]').textContent = factsData.counter2;
+      document.querySelector('[data-cms-bind="#facts .counters-item:nth-of-type(3) strong"]').textContent = factsData.counter3;
+      document.querySelector('[data-cms-bind="#facts .counters-item:nth-of-type(4) strong"]').textContent = factsData.counter4;
+      document.querySelector('[data-cms-bind="#facts .fact-image img"]').src = factsData.image;
+
+      // Populate Pricing Section
+      const pricingContainer = document.querySelector('.pricing');
+      pricingContainer.innerHTML = '';
+      pricingData.forEach((item, index) => {
+        const pricingItem = document.createElement('div');
+        pricingItem.className = `pricing_item wow fadeInUp ${item.title === '成人進階班' ? 'active' : ''} ${item.title === '客製化創作' ? 'dark_gray' : ''}`;
+        pricingItem.setAttribute('data-wow-delay', `${300 + index * 100}ms`);
+        const features = item.features.map(feature => `<li class="pricing_feature">${feature}</li>`).join('');
+        pricingItem.innerHTML = `
+          <h3 data-cms-bind="#pricing .pricing_item:nth-of-type(${index + 1}) h3">${item.title}</h3>
+          <div class="pricing_price"><span class="pricing_currency">$</span><span data-cms-bind="#pricing .pricing_item:nth-of-type(${index + 1}) .pricing_price span:last-child">${item.price}</span></div>
+          <p class="pricing_sentence" data-cms-bind="#pricing .pricing_item:nth-of-type(${index + 1}) .pricing_sentence">${item.sentence}</p>
+          <ul class="pricing_list">
+            ${features}
+          </ul>
+          <a class="btn_common text-center" href="#.">選擇課程</a>
+        `;
+        pricingContainer.appendChild(pricingItem);
+      });
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  fetchData();
 </script>
 </body>
 </html>

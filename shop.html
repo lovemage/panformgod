@@ -229,6 +229,43 @@
       }
     });
   }
+
+  async function fetchData() {
+    try {
+      const shopResponse = await fetch('/_data/shop/');
+      const shopData = await shopResponse.json();
+
+      // Populate Shop Section
+      const shopContainer = document.querySelector('[data-cms-collection="shop"]');
+      shopContainer.innerHTML = '';
+      shopData.forEach((item, index) => {
+        const shopItem = document.createElement('div');
+        shopItem.className = 'col-md-4 col-sm-6 margin10 bottom15 wow fadeIn';
+        shopItem.setAttribute('data-wow-delay', `${300 + index * 100}ms`);
+        shopItem.innerHTML = `
+          <div class="shopping_box">
+            <div class="image">
+              <img data-cms-bind="image" src="${item.image}" alt="書法作品" class="img-responsive border-radius">
+              <div class="overlay border_radius">
+                <a class="btn_common yellow border_radius btn-cart" href="shop_cart.html">收藏作品</a>
+              </div>
+            </div>
+            <div class="shop_content text-center">
+              <h4><a href="shop_detail.html" class="title_link" data-cms-bind="title">${item.title}</a></h4>
+              <p data-cms-bind="description">${item.description}</p>
+              <h4 class="price_product" data-cms-bind="price">${item.price}</h4>
+            </div>
+          </div>
+        `;
+        shopContainer.appendChild(shopItem);
+      });
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  fetchData();
 </script>
 </body>
 </html>

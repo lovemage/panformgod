@@ -269,6 +269,68 @@
       }
     });
   }
+
+  async function fetchData() {
+    try {
+      const mainResponse = await fetch('/_data/event-main.json');
+      const mainData = await mainResponse.json();
+
+      const processResponse = await fetch('/_data/process_steps/');
+      const processData = await processResponse.json();
+
+      const galleryResponse = await fetch('/_data/gallery_items/');
+      const galleryData = await galleryResponse.json();
+
+      // Populate Main Section
+      document.querySelector('[data-cms-bind="heading"]').textContent = mainData.heading;
+      document.querySelector('[data-cms-bind="subheading"]').textContent = mainData.subheading;
+      document.querySelector('[data-cms-bind="process_heading"]').innerHTML = mainData.process_heading + ' <span class="divider-center"></span>';
+      document.querySelector('[data-cms-bind="process_subheading"]').textContent = mainData.process_subheading;
+      document.querySelector('[data-cms-bind="gallery_heading"]').innerHTML = mainData.gallery_heading + ' <span class="divider-center"></span>';
+      document.querySelector('[data-cms-bind="gallery_subheading"]').textContent = mainData.gallery_subheading;
+
+      // Populate Process Steps
+      const processContainer = document.querySelector('[data-cms-collection="process_steps"]');
+      processContainer.innerHTML = '';
+      processData.forEach((step, index) => {
+        const stepElement = document.createElement('div');
+        stepElement.className = 'col-md-3 col-sm-6';
+        stepElement.innerHTML = `
+          <div class="process_box text-center wow fadeIn" data-wow-delay="${300 + index * 100}ms">
+            <div class="icon_circle border_radius">
+              <i class="icon-pen"></i>
+            </div>
+            <h4 data-cms-bind="title">${step.title}</h4>
+            <p data-cms-bind="description">${step.description}</p>
+          </div>
+        `;
+        processContainer.appendChild(stepElement);
+      });
+
+      // Populate Gallery
+      const galleryContainer = document.querySelector('[data-cms-collection="gallery_items"]');
+      galleryContainer.innerHTML = '';
+      galleryData.forEach((item, index) => {
+        const galleryItem = document.createElement('div');
+        galleryItem.className = 'col-md-4 col-sm-6';
+        galleryItem.innerHTML = `
+          <div class="events margin_top wow fadeIn" data-wow-delay="${300 + index * 100}ms">
+            <div class="image">
+              <img data-cms-bind="image" src="${item.image}" alt="eventss" class="border_radius">
+            </div>
+            <h4 class="top30"><a href="event_detail.html" data-cms-bind="title">${item.title}</a></h4>
+            <p class="bottom20 margin10" data-cms-bind="description">${item.description}</p>
+          </div>
+        `;
+        galleryContainer.appendChild(galleryItem);
+      });
+
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  }
+
+  fetchData();
 </script>
 </body>
 </html>
